@@ -1,0 +1,68 @@
+{% extends 'passengers/base.html' %}
+
+{% load static %}
+{% load ratings %}
+
+{% block content %}
+<div class="container">
+
+  <div class="profile">
+    <div class="row">
+      <div class="col-md-2 side">
+        {% if profiles.profile_pic %}
+        <img class="picture-circle" src="{{ profiles.profile_pic.url }}">
+        {{profile.bio}}
+        {% else %}
+        <img class="picture-circle" src="{% static 'images/profile_placeholder.jpg' %}">
+        {% endif %} <br>
+        <h1 class="username text-center">{{ user.username }}</h1>
+        <h3>Review</h3>
+        {% ratings profiles %}
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Information</h2>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4 edit-prof">
+            {% if request.user == user %}
+            <a class="edit-desktop" href="{% url 'rider:edit' user.username %}">
+              <button class="edit-profile">Edit Profile</button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="row">
+              <h3>Name:</h3>
+                {{user.first_name}} {{user.last_name}}
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="row">
+              <h3>Location</h3>
+              {{profiles.location }}
+            </div>
+          </div>
+        </div>
+        <hr>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <h3>Mobile</h3>
+                  {{profiles.phone_number}}
+              </div>
+            </div>
+
+
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

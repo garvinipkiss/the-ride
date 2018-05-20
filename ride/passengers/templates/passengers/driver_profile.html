@@ -1,0 +1,105 @@
+{% extends 'passengers/base.html' %}
+
+{% load static %}
+{% load ratings %}
+
+{% block content %}
+<div class="container">
+
+  <div class="profile">
+    <div class="row">
+      <div class="col-md-2 side">
+        {% if driver_profile.profile_pic %}
+        <img class="picture-circle" src="{{ driver_profile.profile_pic.url }}">
+        {{profile.bio}}
+        {% else %}
+        <img class="picture-circle" src="{% static 'images/profile_placeholder.jpg' %}">
+        {% endif %} <br>
+        <h1 class="username text-center">{{ driver_profile.user.username }}</h1>
+        <h3>Review</h3>
+        {% ratings driver_profile %}
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Information</h2>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4 edit-prof">
+            {% if driver_profile.user == user %}
+            <a class="edit-desktop" href="{% url 'rider:edit' user.username %}">
+              <button class="edit-profile">Edit Profile</button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <h3>Name:</h3>
+                  {{user.first_name}} {{user.last_name}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <h3>City</h3>
+                {{driver_profile.city}}
+              </div>
+            </div>
+          </div>
+          <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <h3>Mobile</h3>
+                    {{driver_profile.phone_number}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <h3>Model</h3>
+                  {{driver_profile.car_model}}
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <h3>Car Number plate</h3>
+                      {{driver_profile.car_number_plates}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <h3>Car Image</h3>
+
+                  </div>
+                </div>
+              </div>
+            <hr>
+            <div class="row">
+                <div class="col-md-6">
+                  <div class="row">
+                    <h3>Car capacity:</h3>
+                      {{driver_profile.car_capacity}}
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="row">
+                    <h3>Car Color:</h3>
+                    {{driver_profile.car_color}}
+                  </div>
+                </div>
+              </div>
+
+
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}
