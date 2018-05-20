@@ -1,0 +1,95 @@
+{% extends 'drivers/base.html' %}
+
+{% load static %}
+
+{% block body_class_override %}white{% endblock %}
+{% block content %}
+<div class="container">
+  <div class="row profile-settings">
+    <div class="col-xs-12">
+      <div class="profile-pic-name">
+        {% if user.driver_profile.profile_pic %}
+          <img class="picture-circle--medium" src="{{ user.driver_profile.profile_pic.url }}">
+        {% else %}
+          <img class="picture-circle--medium" src="{% static 'images/profile_placeholder.jpg' %}">
+        {% endif %}
+        <span class="username">{{ user.username }}</span>
+      </div>
+      <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+          {{ profile_form.profile_pic.label }}
+          {{ profile_form.profile_pic }}
+          {{ profile_form.profile_pic.errors }}
+        </div>
+        <div class="form-group">
+          {{ user_form.first_name.label }} <br>
+          {{ user_form.first_name }}
+          {{ user_form.first_name.errors }}
+        </div>
+        <div class="form-group">
+          {{ user_form.last_name.label }} <br>
+          {{ user_form.last_name }}
+          {{ user_form.last_name.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.email.label }} <br>
+          {{ profile_form.email }}
+          {{ profile_form.email.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.bio.label }} <br>
+          {{ profile_form.bio }}
+          {{ profile_form.bio.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.city.label }}<br>
+          {{ profile_form.city }}
+          {{ profile_form.city.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.phone_number.label }}<br>
+          {{ profile_form.phone_number }}
+          {{ profile_form.phone_number.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.car_image.label }}<br>
+          {{ profile_form.car_image }}
+          {{ profile_form.car_image.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.car_capacity.label }}<br>
+          {{ profile_form.car_capacity }}
+          {{ profile_form.car_capacity.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.car_number_plates.label }}<br>
+          {{ profile_form.car_number_plates }}
+          {{ profile_form.car_number_plates.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.car_model.label }}<br>
+          {{ profile_form.car_model }}
+          {{ profile_form.car_model.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.car_color.label }}<br>
+          {{ profile_form.car_color }}
+          {{ profile_form.car_color.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.current_location.label }}<br>
+          {{ profile_form.current_location }}
+          {{ profile_form.current_location.errors }}
+        </div>
+        <div class="form-group">
+          {{ profile_form.destination.label }}<br>
+          {{ profile_form.destination }}
+          {{ profile_form.destination.errors }}
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
