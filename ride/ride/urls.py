@@ -13,9 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
+from . import views
+from django.contrib.auth import views as view
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^$', views.index, name = 'index'),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', view.logout, {"next_page": '/'}),
+    url(r'^ratings/', include('star_ratings.urls', namespace='ratings', app_name='ratings')),
+    url(r'^driver/', include('drivers.urls')),
+    url(r'^rider/', include('rider.urls')),
 ]
+
+if settings.DEBUG:
+  urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
