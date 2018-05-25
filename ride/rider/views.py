@@ -12,7 +12,7 @@ def rider(request):
   user = User.objects.get(username = request.user.username)
   profile = Rider_profile.objects.get(user =user)
   drivers = Driver_profile.objects.all()
-  return render(request, 'passengers/rider.html', {"profile": profile, "drivers":drivers})
+  return render(request, 'rider/rider.html', {"profile": profile, "drivers":drivers})
 
 
 def update_profile(request,username):
@@ -21,7 +21,7 @@ def update_profile(request,username):
     user_form = UserForm(request.POST, instance = request.user)
     profile_form = ProfileForm(request.POST, instance =request.user.rider_profile, files = request.FILES)
     if user_form.is_valid() and profile_form.is_valid():
-      print('gjhdgasjdg')
+      print('master')
       user_form.save()
       profile_form.save()
       messages.success(request, ('Your profile was successfully updated!'))
@@ -32,7 +32,7 @@ def update_profile(request,username):
   else:
     user_form = UserForm(instance = request.user)
     profile_form = ProfileForm(instance = request.user.rider_profile)
-  return render(request, 'passengers/profiles/profile_form.html', {"user_form":user_form, "profile_form":profile_form})
+  return render(request, 'rider/profiles/profile_form.html', {"user_form":user_form, "profile_form":profile_form})
 
 @login_required
 def profile(request, username):
@@ -43,7 +43,7 @@ def profile(request, username):
 
   title = f"{user.username}"
 
-  return render(request, 'passengers/profiles/profile.html', {"title":title, "user":user, "profiles": profiles})
+  return render(request, 'rider/profiles/profile.html', {"title":title, "user":user, "profiles": profiles})
 
 
 #Rider sees a particular driver's profile
@@ -55,10 +55,10 @@ def driver_profile(request,driver_profile_id,trip_plan_id):
     existing_bookings = Booking.objects.filter(trip_plan =trip_plan.id)
     if len(existing_bookings) < trip_plan.driver_profile.car_capacity:
       seats_left = trip_plan.driver_profile.car_capacity - len(existing_bookings)
-      return render(request,'passengers/driver_profile.html',{'driver_profile': driver_profile,"seats_left":seats_left,"trip_plan":trip_plan})
+      return render(request,'rider/driver_profile.html',{'driver_profile': driver_profile,"seats_left":seats_left,"trip_plan":trip_plan})
     elif len(existing_bookings) == trip_plan.driver_profile.car_capacity:
       message = "this ride is fully booked"
-      return render(request,'passengers/driver_profile.html',{'driver_profile': driver_profile,"message":message})
+      return render(request,'rider/driver_profile.html',{'driver_profile': driver_profile,"message":message})
 
 def booking_seat(request, driver_profile_id):
   current_user = request.user

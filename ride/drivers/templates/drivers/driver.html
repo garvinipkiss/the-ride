@@ -19,7 +19,7 @@
             <h2 class="text-center">Welcome {{ user.username }} </h2>
             <ul class="nav nav-tabs">
               <li class="active"><a data-toggle="tab" href="#home">Pick up points</a></li>
-              <li><a data-toggle="tab" href="#drivers">Passengers</a></li>
+              <li><a data-toggle="tab" href="#drivers">rider</a></li>
               <li><a data-toggle="tab" href="#trip">Trip</a></li>
           </ul>
 
@@ -34,7 +34,7 @@
                 <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>
               <div id="drivers" class="tab-pane fade">
-                <h3>Passengers</h3>
+                <h3>rider</h3>
                 {% for rider in riders%}
                 <h1>
                   <a href="{% url 'drivers:rider_profile' rider.user.id%}">{{rider.user.username}}</a>

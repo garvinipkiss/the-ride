@@ -11,7 +11,5 @@ urlpatterns = [
   url(r'^profile/(?P<username>[-_\w.]+)/edit/$', views.update_profile, name='edit'),
   url(r'^rider_profile/(\d+)/$', views.rider_profile, name='rider_profile'),
 ]
-
-
 if settings.DEBUG:
   urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT )
