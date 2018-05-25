@@ -1,0 +1,45 @@
+body{
+  padding-top: 50px;
+  min-height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+.picture-circle, .picture-circle--medium, .picture-circle--small {
+  border-radius: 100%;
+  width: 150px;
+  height: 150px; }
+  .picture-circle--medium {
+    width: 36px;
+    height: 36px; }
+  .picture-circle--small {
+    width: 30px;
+    height: 30px; }
+
+    .profile-pic-name {
+      padding: 30px 0; }
+      .profile-pic-name span {
+        font-size: 24px;
+        font-weight: bold;
+        vertical-align: middle;
+        margin-left: 32px; }
+
+.profile {
+  margin-left: 10px;
+  margin-top: 50px;
+}
+
+.edit-prof {
+  margin-top: 25px;
+}
+#map {
+  height: 400px;
+  width: 100%;
+}
+.car_image{
+  width: 50%;
+  height: 50%;
+
+}
