@@ -80,24 +80,10 @@ h1.block-title {
   color: #fff;
 }
 
-.app-footer {
-  background-color: #262F36;
-}
-.app-footer ul{
-  color: #fff;
-}
 .m-t-md, .m-y-md {
   margin-top: 30px !important;
   color: #fff;
 }
-
-
-
-
-
-
-
-
 
 
 .app-navbar {
@@ -147,7 +133,7 @@ a {
 .navbar-right  ul li a:hover{
   background-color: transparent;
   text-decoration: none;
-  color: #fff;
+  color: #white;
 }
 a:hover {
   background: transparent;
