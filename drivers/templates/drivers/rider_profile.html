@@ -1,0 +1,75 @@
+{% extends 'drivers/base.html' %}
+{% load static %}
+{% load ratings %}
+
+{% block content %}
+<div class="container">
+
+  <div class="profile">
+    <div class="row">
+      <div class="col-md-2 side">
+        {% if rider_profile.profile_pic %}
+        <img class="picture-circle" src="{{ rider_profile.profile_pic.url }}">
+        {% else %}
+        <img class="picture-circle" src="{% static 'images/profile_placeholder.jpg' %}">
+        {% endif %} <br>
+        <h1 class="username text-center">{{ rider_profile.user.username }}</h1>
+        <h3>Review</h3>
+        {% ratings rider_profile %}
+      </div>
+      <div class="col-md-8">
+        <div class="row">
+          <div class="col-md-4">
+            <h2>Information</h2>
+          </div>
+          <div class="col-md-4"></div>
+          <div class="col-md-4 edit-prof">
+            {% if  rider_profile.user == user %}
+            <a class="edit-desktop" href="{% url 'drivers:edit' user.username %}">
+              <button class="edit-profile">Edit Profile</button>
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+              <div class="row">
+                <h3>Name:</h3>
+                  {{user.first_name}} {{user.last_name}}
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="row">
+                <h3>City</h3>
+                {{rider_profile.location}}
+              </div>
+            </div>
+          </div>
+          <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <h3>Mobile</h3>
+                    {{rider_profile.phone_number}}
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="row">
+                  <h3>bio</h3>
+                  {% if rider_profile.bio%}
+                  {{rider_profile.bio}}
+                  {% else %}
+                  <p>This passenger doesnt have a bio yet</p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+      </div>
+      <div class="col-md-2"></div>
+    </div>
+  </div>
+</div>
+
+
+{% endblock %}

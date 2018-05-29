@@ -1,0 +1,45 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+  {%if title%}
+
+  <title>{{title}}</title>
+
+  {%endif%}
+
+  {% block styles %}
+    {% bootstrap_css %}
+  <link href="https://fonts.googleapis.com/css?family=Marck+Script" rel="stylesheet">
+  {% endblock %}
+
+</head>
+
+<body>
+
+  {% block content %}
+  {% include "navbar.html" %}
+  {%endblock%}
+
+
+  {% block scripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    {% bootstrap_javascript %}
+  {% endblock %}
+  <style>
+   body{
+     background-image: url(../../static/images/login.jpg);
+      background-size: 1280px 800px;
+     background-attachment: fixed;
+     font-family: 'Marck Script', cursive;
+  }
+  </style>
+</body>
+
+</html>
