@@ -1,0 +1,17 @@
+confusable-homoglyphs==3.1.1
+dj-database-url==0.5.0
+Django==1.11
+django-bootstrap3==10.0.1
+django-bootstrap4==0.0.6
+django-braces==1.13.0
+django-model-utils==3.1.2
+django-registration==2.4.1
+django-star-ratings==0.6.1
+gunicorn==19.8.1
+Pillow==5.1.0
+psycopg2==2.7.4
+psycopg2-binary==2.7.4
+python-decouple==3.1
+pytz==2018.4
+swapper==1.1.0
+whitenoise==3.3.1
